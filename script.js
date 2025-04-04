@@ -189,10 +189,14 @@ if (contactForm) {
 
             // Replace with your actual endpoint
             const response = await fetch('https://cjh-backend-portfolio.onrender.com/api/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
-            });
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(formData),
+      mode: 'cors' // Explicitly enable CORS mode
+    });
 
             if (!response.ok) {
                 const error = await response.json();
