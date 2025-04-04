@@ -584,6 +584,190 @@ section {
     opacity: 0.85;
     line-height: 1.5;
 }
+/* ======================
+   SKILLS SECTION
+   ====================== */
+   .skills {
+    background-color: var(--light);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 25px;
+}
+
+.skill-card {
+    background: var(--white);
+    padding: 30px 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: all 0.5s var(--ease-out-quint);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.skill-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    z-index: -1;
+    transition: all 0.5s var(--ease-out-quint);
+}
+
+.skill-card:hover:before {
+    width: 100%;
+}
+
+.skill-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+.skill-card i {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+    transition: all 0.3s var(--ease-out-quint);
+}
+
+.skill-card:hover i {
+    color: var(--white);
+    transform: scale(1.2);
+}
+
+.skill-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s var(--ease-out-quint);
+}
+
+.skill-card:hover h3 {
+    color: var(--white);
+}
+
+/* ======================
+   CERTIFICATIONS SECTION
+   ====================== */
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.certification-card {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    transition: all 0.5s var(--ease-out-quint);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.certification-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+    transition: all 0.5s var(--ease-out-quint);
+}
+
+.certification-card:hover:before {
+    height: 100%;
+    opacity: 0.1;
+}
+
+.certification-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+.certification-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    font-size: 2rem;
+    transition: all 0.5s var(--ease-out-quint);
+}
+
+.certification-card:hover .certification-icon {
+    transform: rotate(15deg) scale(1.1);
+    box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+}
+
+.certification-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    transition: all 0.3s var(--ease-out-quint);
+}
+
+.certification-card p {
+    color: var(--gray);
+    margin-bottom: 25px;
+    transition: all 0.3s var(--ease-out-quint);
+}
+
+.certification-card:hover p {
+    color: var(--dark);
+}
+
+.certification-card .btn-outline {
+    transition: all 0.5s var(--ease-out-quint);
+}
+
+.certification-card:hover .btn-outline {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+}
+
+/* Responsive adjustments for skills and certifications */
+@media (max-width: 767.98px) {
+    .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+    
+    .certifications-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 15px;
+    }
+    
+    .skill-card {
+        padding: 20px 10px;
+    }
+    
+    .skill-card i {
+        font-size: 2rem;
+    }
+    
+    .skill-card h3 {
+        font-size: 0.9rem;
+    }
+}
 
 /* ======================
    EXPERIENCE SECTION

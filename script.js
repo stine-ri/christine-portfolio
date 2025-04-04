@@ -13,6 +13,9 @@ const contactForm = document.getElementById('contact-form');
 const menuToggle = selectElement('.menu-toggle');
 const downloadCvButton = document.querySelector('.download-cv');
 const yearElement = document.getElementById('current-year');
+const skillsSection = document.getElementById('skills');
+const skillCards = document.querySelectorAll('.skill-card');
+const certificationCards = document.querySelectorAll('.certification-card');
 
 // Mobile Menu Toggle
 if (menuToggle) {
@@ -185,7 +188,7 @@ if (contactForm) {
             }
 
             // Replace with your actual endpoint
-            const response = await fetch('http://localhost:8000/api/contact', {
+            const response = await fetch('https://cjh-backend-portfolio.onrender.com/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
@@ -262,7 +265,12 @@ if (downloadCvButton) {
 
 // Scroll Reveal Animation
 function revealOnScroll() {
-    const revealElements = document.querySelectorAll('.hero-content, .hero-image, .about-text, .about-image, .section-title, .skill-item, .service-card, .stat-item, .timeline-item, .project-card, .testimonial-slider, .contact-info, .contact-form');
+    const revealElements = document.querySelectorAll(
+        '.hero-content, .hero-image, .about-text, .about-image, ' +
+        '.section-title, .skill-item, .service-card, .stat-item, ' +
+        '.timeline-item, .project-card, .testimonial-slider, ' +
+        '.contact-info, .contact-form, .skill-card, .certification-card'
+    );
     
     if (revealElements.length > 0) {
         revealElements.forEach(element => {
@@ -281,7 +289,12 @@ window.addEventListener('scroll', revealOnScroll);
 
 // Initialize elements with hidden state
 document.addEventListener('DOMContentLoaded', () => {
-    const elementsToAnimate = document.querySelectorAll('.hero-content, .hero-image, .about-text, .about-image, .section-title, .skill-item, .service-card, .stat-item, .timeline-item, .project-card, .testimonial-slider, .contact-info, .contact-form');
+    const elementsToAnimate = document.querySelectorAll(
+        '.hero-content, .hero-image, .about-text, .about-image, ' +
+        '.section-title, .skill-item, .service-card, .stat-item, ' +
+        '.timeline-item, .project-card, .testimonial-slider, ' +
+        '.contact-info, .contact-form, .skill-card, .certification-card'
+    );
     
     if (elementsToAnimate.length > 0) {
         elementsToAnimate.forEach(element => {
@@ -301,6 +314,36 @@ document.addEventListener('DOMContentLoaded', () => {
             heroImage.style.opacity = '1';
             heroImage.style.transform = 'translateY(0)';
         }
+    }
+
+    // Add hover effects for skill cards
+    if (skillCards.length > 0) {
+        skillCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+                this.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.2)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+            });
+        });
+    }
+
+    // Add hover effects for certification cards
+    if (certificationCards.length > 0) {
+        certificationCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+                this.querySelector('.certification-icon').style.transform = 'rotate(15deg) scale(1.1)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.querySelector('.certification-icon').style.transform = 'rotate(0) scale(1)';
+            });
+        });
     }
 });
 
